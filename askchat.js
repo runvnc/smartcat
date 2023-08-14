@@ -1,7 +1,4 @@
-import delay from 'delay'
-import assert from 'assert'
 import {yieldStream} from 'yield-stream'
-import md5 from 'md5'
 import { OpenAI } from "openai-streams/node"
 
 function getDeltas(ev) {

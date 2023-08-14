@@ -1,11 +1,11 @@
 {
-  "name": "smartcat",
+  "name": "aicat",
   "version": "1.0.0",
   "description": "",
-  "main": "smartcat",
+  "main": "aicat",
   "type": "module",
   "bin": {
-    "smartcat": "smartcat.js"
+    "aicat": "aicat.js"
   },
   "directories": {
     "test": "test"
@@ -16,8 +16,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "delay": "^6.0.0",
-    "md5": "^2.3.0",
     "openai": "^3.3.0",
     "openai-streams": "^4.0.2",
     "yield-stream": "^3.1.0"
