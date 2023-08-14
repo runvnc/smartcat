@@ -1,0 +1,22 @@
+{
+  "name": "smartcat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "smartcat",
+  "type": "module",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "delay": "^6.0.0",
+    "md5": "^2.3.0",
+    "openai": "^3.3.0",
+    "openai-streams": "^4.0.2",
+    "yield-stream": "^3.1.0"
+  }
+}
