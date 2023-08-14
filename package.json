@@ -1,6 +1,6 @@
 {
   "name": "aicat",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "",
   "main": "aicat",
   "type": "module",
@@ -13,8 +13,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Jason Livesay",
+  "license": "MIT",
   "dependencies": {
     "openai": "^3.3.0",
     "openai-streams": "^4.0.2",

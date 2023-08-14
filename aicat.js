@@ -25,5 +25,9 @@ for (let i = 2; i < process.argv.length; i++) {
     }
 }
 
-askChat([{role:'user', content: inputText}])
+const note = `
+
+IMPORTANT: This will be used in scripts, raw file output only, no header, separators, or filename! 
+`
+askChat([{role:'user', content: inputText + note}])
 
