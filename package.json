@@ -4,6 +4,9 @@
   "description": "",
   "main": "smartcat",
   "type": "module",
+  "bin": {
+    "smartcat": "smartcat.js"
+  },
   "directories": {
     "test": "test"
   },
