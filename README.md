@@ -7,7 +7,7 @@ Then this is sent to OpenAI as a completion and the response is streamed to sdou
 # Install
 
 ```shell
-npm i -g smartcat
+npm i -g aicat
 
 export OPENAPI_AI_KEY=XXXXXXXXXXXXXXXXXXXXXXXX
 ```
@@ -15,5 +15,5 @@ export OPENAPI_AI_KEY=XXXXXXXXXXXXXXXXXXXXXXXX
 # Usage
 
 ```shell
-smartcat file1.mustache file2.html "extract template fields from file1 and insert into appropriate locations in file2"
+cat file1.mustache file2.html "extract template fields from file1 and insert into appropriate locations in file2" | tee file2.mustache
 ```
