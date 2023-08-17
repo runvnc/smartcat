@@ -12,7 +12,7 @@ function getDeltas(ev) {
   return deltas[0]
 }
 
-async function askChat(messages, model='gpt-3.5-turbo') {
+async function askChat(messages, model='gpt-3.5-turbo-16k') {
   let cfg = { model, messages,
               temperature: 0.0, n: 1,
               presence_penalty: 0.6 }   
