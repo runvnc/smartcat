@@ -16,7 +16,6 @@ async function askChat(messages, model='gpt-3.5-turbo-16k') {
   let cfg = { model, messages,
               temperature: 0.0, n: 1,
               presence_penalty: 0.6 }   
-
   const stream = await OpenAI("chat", cfg, {mode: 'raw'} )
   let decoder = new TextDecoder()
 

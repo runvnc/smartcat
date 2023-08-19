@@ -12,10 +12,15 @@ if (!OPENAI_API_KEY) {
 }
 
 let inputText = "";
+let model = 'gpt-3.5-turbo-16k'
 
 for (let i = 2; i < process.argv.length; i++) {
     const arg = process.argv[i];
-    
+    if (arg == '-4') {
+      model = 'gpt-4'
+      continue
+    }
+
     if (fs.existsSync(arg)) {
         inputText += `----- FILE: ${arg} -----\n`;
         inputText += fs.readFileSync(arg, 'utf8');
@@ -29,5 +34,6 @@ const note = `
 
 IMPORTANT: This will be used in scripts, raw file output only, no header, separators, or filename! 
 `
-askChat([{role:'user', content: inputText + note}])
+askChat([{role:'system', content: 'You are an advanced AI-based software engineer.',
+          role:'user', content: inputText + note}], model)
 
