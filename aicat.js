@@ -3,6 +3,7 @@
 import fs from 'fs'
 import https from 'https'
 import askChat from './askchat.js'
+import {textOut, getDefinitions} from './fns.js'
 
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
@@ -30,10 +31,27 @@ for (let i = 2; i < process.argv.length; i++) {
     }
 }
 
-const note = `
 
-IMPORTANT: This will be used in scripts, raw file output only, no header, separators, or filename! 
+const sysinfo = `
+
+You are an advaned AI software engineer, taking the place of the Linux cat command.
+You MUST Use the stdOut() function with the {out} parameter.
+Output ONLY what is requested, with no extra example files.
+DO NOT include a filename header since there is only one file being output.
 `
-askChat([{role:'system', content: 'You are an advanced AI-based software engineer.',
-          role:'user', content: inputText + note}], model)
+
+const note = `output raw text only: `
+
+
+let {function_call} = await askChat([{role:'system', content: sysinfo, 
+                               role:'user', content: inputText}], getDefinitions(), model)
+try {
+  let cleaned = function_call.arguments.replace(/[\x00-\x1F]+/g, '');
+  textOut(JSON.parse(cleaned))
+} catch (e) {
+  
+  console.error(e)
+  console.log(function_call.arguments)
+
+}
 
