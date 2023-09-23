@@ -12,6 +12,9 @@ if (!OPENAI_API_KEY) {
     process.exit(1);
 }
 
+console.error("Note: The streaming output is on stderr and has some minor issues,")
+console.error("but when it finishes streaming it will write the correct text to stdout.\n\n")
+
 let inputText = "";
 let model = 'gpt-3.5-turbo-16k'
 
@@ -47,6 +50,8 @@ let {function_call} = await askChat([{role:'system', content: sysinfo,
                                role:'user', content: inputText}], getDefinitions(), model)
 try {
   let cleaned = function_call.arguments.replace(/[\x00-\x1F]+/g, '');
+  console.error()
+  
   textOut(JSON.parse(cleaned))
 } catch (e) {
   
