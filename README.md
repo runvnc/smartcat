@@ -4,7 +4,7 @@ Will cat (output) any files listed in order with filename and separator; any dou
 
 ## Breaking change
 
-Then this is sent to OpenAI as a completion and the response is sent to stdout or to the file(s) specified by ChatGPT.
+Then this is sent to OpenAI as a completion and the response is sent to the file(s) specified by ChatGPT.
 
 # Install
 
@@ -17,13 +17,18 @@ export OPENAPI_AI_KEY=XXXXXXXXXXXXXXXXXXXXXXXX
 # Usage
 
 ```shell
-aicat file1.mustache file2.html "extract template fields from file1 and insert into appropriate locations in file2" | tee file2.mustache
+# should create file2.mustache
+
+aicat file1.mustache file2.html "extract template fields from file1 and insert into appropriate locations in file2"
 ```
 
 GPT-4
 
 ```shell
-aicat -4 "list of MLB teams sorted by city name" > mlb.txt
+
+# should create mlb.txt or similar
+
+aicat -4 "list of MLB teams sorted by city name"
 ```
 
 
