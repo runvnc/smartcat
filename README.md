@@ -2,7 +2,9 @@ Ask ChatGPT using some files as part of the instructions.
 
 Will cat (output) any files listed in order with filename and separator; any double quoted command arguments are inserted as instructions.
 
-Then this is sent to OpenAI as a completion and the response is streamed to sdout.
+## Breaking change
+
+Then this is sent to OpenAI as a completion and the response is sent to stdout or to the file(s) specified by ChatGPT.
 
 # Install
 

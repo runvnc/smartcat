@@ -14,10 +14,9 @@ function decode(str) {
     return replacedEscapes;
 }
 
-async function askChat(messages, functions=null, model='gpt-3.5-turbo-16k') {
-  const cfg = { model, messages, 
+async function askChat(messages, functions=null, model='gpt-3.5-turbo-16k', allowed='auto') {
+  const cfg = { model, messages, function_call: allowed, 
                 temperature: 0.0, n: 1,
-                function_call: { name: 'textOut' },
               presence_penalty: 0.6 }   
   if (functions) cfg.functions = functions
   const stream = await OpenAI("chat", cfg, {mode: 'raw'} )
@@ -49,7 +48,6 @@ async function askChat(messages, functions=null, model='gpt-3.5-turbo-16k') {
         }
       }
     }
-    
     return {content, function_call}
   } catch (e) {
     console.error(e)

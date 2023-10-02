@@ -1,21 +1,35 @@
-export function textOut({stdout}) {
-  process.stdout.write(stdout + '\n')
+import fs from 'fs/promises'
+
+export async function fileOut({filename, text}) {
+  await fs.writeFile(filename, text, 'utf8')
 }
 
 export function getDefinitions() {
     return [
-        {
-            "name": "textOut",
-            "description": "Outputs ONLY the text requested according to the context and instructions given, with ZERO explanation or external filenames etc.",
+      {
+            "name": "done",
+            "description": "Indicates all files have been output.",
+            "parameters": {
+              "type": "object",
+              "properties": {}
+            }
+      },
+      {
+            "name": "fileOut",
+            "description": "Outputs the text to the specified file.",
             "parameters": {
                 "type": "object",
-                "properties": {
-                    "stdout": {
+              "properties": {
+                    "filename": {
                         "type": "string",
-                        "description": "The output text as a JSON-encoded string.",
+                        "description": "The relative filename.",
+                    },
+                    "text": {
+                        "type": "string",
+                        "description": "The file contents.",
                     },
                 },
-                "required": ["stdout"],
+                "required": ["filename", "text"],
             },
         }
     ];
