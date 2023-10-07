@@ -1,6 +1,35 @@
 import fs from 'fs/promises'
+import path from 'path'
 
 export async function fileOut({filename, text}) {
+  const dir = path.dirname(filename)
+  const backupDir = path.join(dir, '.backup')
+  const baseName = path.basename(filename)
+  let index = 0
+
+  try {
+    await fs.access(backupDir)
+  } catch (err) {
+    await fs.mkdir(backupDir)
+  }
+
+  while (true) {
+    try {
+      await fs.access(path.join(backupDir, `${baseName}.${index}`))
+      index++
+    } catch (err) {
+      break
+    }
+  }
+
+  try {
+    const backupFile = path.join(backupDir, `${baseName}.${index}`)
+    await fs.rename(filename, backupFile)
+    console.error(`Backup file created: ${backupFile}`)
+  } catch (err) {
+    // File doesn't exist, do nothing
+  }
+
   await fs.writeFile(filename, text, 'utf8')
 }
 

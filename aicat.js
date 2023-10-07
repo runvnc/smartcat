@@ -52,7 +52,7 @@ do {
   try {
     if (!function_call) break
     if (!function_call.arguments) break
-    let cleaned = function_call.arguments.replace(/[\x00-\x1F]+/g, '');
+    let cleaned = function_call.arguments; //.replace(/[\x00-\x1F]+/g, '');
     console.error()
     cleaned = JSON.parse(cleaned)
     if (function_call && function_call.name == 'fileOut') {
